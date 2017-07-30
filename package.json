@@ -1,0 +1,23 @@
+{
+  "name": "block-count",
+  "version": "0.0.1",
+  "description": "App that count blockchain blocks",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://claudiomaxx@github.com/claudiomaxx/block-count.git"
+  },
+  "keywords": [
+    "blockchain"
+  ],
+  "author": "Claudio Silva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/claudiomaxx/block-count/issues"
+  },
+  "homepage": "https://github.com/claudiomaxx/block-count#readme"
+}

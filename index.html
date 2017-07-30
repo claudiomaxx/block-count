@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html ng-app="blockCountApp">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div ng-controller="cotacaoCtrl" class="container">
+        <h1>Block-Count</h1>
+
+        <div class="row">
+            <div class="col-xs-6">
+                <h4 class="text-primary">Cotação Brasil</h4>
+                {{cotacao['BRL'].symbol}} {{cotacao['BRL'].last}}
+            </div>
+            <div class="col-xs-6">
+                <h4 class="text-primary">Cotação USD</h4>
+                {{cotacao['USD'].symbol}} {{cotacao['USD'].last}}
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        var app = angular.module('blockCountApp', []).controller('cotacaoCtrl', cotacaoCtrl);
+
+        function cotacaoCtrl($http, $scope) {
+            $http.get('https://blockchain.info/pt/ticker?cors=true', {}).then(function (response) {
+                $scope.cotacao = response.data;
+            });
+
+            $http.get('https://blockchain.info/pt/latestblock', { cors: true }).then(function (response) {
+               console.log(response.data); 
+            });
+        }
+    </script>
+</body>
+
+</html>
